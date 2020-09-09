@@ -204,14 +204,14 @@ static void call_class_loads(void)
             _objc_inform("LOAD: +[%s load]\n", cls->nameForLogging());
         }
 
-        auto start = std::chrono::system_clock::now();
+        auto start = std::chrono::system_clock::now();                                  // before load
 
-        (*load_method)(cls, @selector(load));
+        (*load_method)(cls, @selector(load));                                           // execute load
 
-        auto end = std::chrono::system_clock::now();
+        auto end = std::chrono::system_clock::now();                                    // after load
         std::chrono::duration<double> elapsed_seconds = end - start;
 
-        _objc_inform("LOAD: +[%s load] cost time = %fms", cls->nameForLogging(), elapsed_seconds.count());
+        printf("LOAD: +[%s load] cost time = %fms\n", cls->nameForLogging(), elapsed_seconds.count()); // log
     }
     
     // Destroy the detached list.
@@ -265,7 +265,7 @@ static bool call_category_loads(void)
             auto end = std::chrono::system_clock::now();
             std::chrono::duration<double> elapsed_seconds = end - start;
 
-            _objc_inform("LOAD: +[%s(%s) load] cost time = %fms", cls->nameForLogging(), _category_getName(cat), elapsed_seconds.count());
+            printf("LOAD: +[%s(%s) load] cost time = %fms\n", cls->nameForLogging(), _category_getName(cat), elapsed_seconds.count());
 
             cats[i].cat = nil;
         }

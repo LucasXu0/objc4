@@ -45,8 +45,6 @@
 		6EACB842232C97A400CE9176 /* objc-zalloc.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EACB841232C97A400CE9176 /* objc-zalloc.h */; };
 		6EACB844232C97B900CE9176 /* objc-zalloc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6EACB843232C97B900CE9176 /* objc-zalloc.mm */; };
 		6ECD0B1F2244999E00910D88 /* llvm-DenseSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 6ECD0B1E2244999E00910D88 /* llvm-DenseSet.h */; };
-		711631572508D0AD00B19822 /* libobjc-trampolines.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BCC727205C68E800DD9AFC /* libobjc-trampolines.dylib */; };
-		711631582508D0AD00B19822 /* libobjc-trampolines.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = F9BCC727205C68E800DD9AFC /* libobjc-trampolines.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		712E81B52508C6ED00C50D51 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC0630554660B00DB518D /* libobjc.A.dylib */; };
 		712E81B62508C6ED00C50D51 /* libobjc.A.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = D2AAC0630554660B00DB518D /* libobjc.A.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		71792B8824BDDCF60098B869 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 71792B8724BDDCF60098B869 /* main.c */; };
@@ -161,13 +159,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		711631592508D0AD00B19822 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F9BCC6CA205C68E800DD9AFC;
-			remoteInfo = "objc-trampolines";
-		};
 		712E81B72508C6ED00C50D51 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
@@ -206,7 +197,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				712E81B62508C6ED00C50D51 /* libobjc.A.dylib in Embed Libraries */,
-				711631582508D0AD00B19822 /* libobjc-trampolines.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,7 +375,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				712E81B52508C6ED00C50D51 /* libobjc.A.dylib in Frameworks */,
-				711631572508D0AD00B19822 /* libobjc-trampolines.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,7 +814,6 @@
 			);
 			dependencies = (
 				712E81B82508C6ED00C50D51 /* PBXTargetDependency */,
-				7116315A2508D0AD00B19822 /* PBXTargetDependency */,
 			);
 			name = objc_debug_ios;
 			productName = objc_debug_ios;
@@ -1074,11 +1062,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7116315A2508D0AD00B19822 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F9BCC6CA205C68E800DD9AFC /* objc-trampolines */;
-			targetProxy = 711631592508D0AD00B19822 /* PBXContainerItemProxy */;
-		};
 		712E81B82508C6ED00C50D51 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2AAC0620554660B00DB518D /* objc */;
