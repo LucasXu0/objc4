@@ -201,6 +201,8 @@ static void call_class_loads(void)
         if (PrintLoading) {
             _objc_inform("LOAD: +[%s load]\n", cls->nameForLogging());
         }
+
+        
         (*load_method)(cls, @selector(load));
     }
     
