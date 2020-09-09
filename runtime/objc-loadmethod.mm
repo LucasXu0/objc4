@@ -28,6 +28,8 @@
 
 #include "objc-loadmethod.h"
 #include "objc-private.h"
+#include <chrono>
+#include <ctime>
 
 typedef void(*load_method_t)(id, SEL);
 
@@ -202,8 +204,14 @@ static void call_class_loads(void)
             _objc_inform("LOAD: +[%s load]\n", cls->nameForLogging());
         }
 
-        
+        auto start = std::chrono::system_clock::now();
+
         (*load_method)(cls, @selector(load));
+
+        auto end = std::chrono::system_clock::now();
+        std::chrono::duration<double> elapsed_seconds = end - start;
+
+        _objc_inform("LOAD: +[%s load] cost time = %fms", cls->nameForLogging(), elapsed_seconds.count());
     }
     
     // Destroy the detached list.
@@ -250,7 +258,15 @@ static bool call_category_loads(void)
                              cls->nameForLogging(), 
                              _category_getName(cat));
             }
+            auto start = std::chrono::system_clock::now();
+
             (*load_method)(cls, @selector(load));
+
+            auto end = std::chrono::system_clock::now();
+            std::chrono::duration<double> elapsed_seconds = end - start;
+
+            _objc_inform("LOAD: +[%s(%s) load] cost time = %fms", cls->nameForLogging(), _category_getName(cat), elapsed_seconds.count());
+
             cats[i].cat = nil;
         }
     }
