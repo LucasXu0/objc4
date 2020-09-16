@@ -1111,6 +1111,7 @@
 				COPY_HEADERS_UNIFDEF_FLAGS = "-UBUILD_FOR_OSX";
 				"COPY_HEADERS_UNIFDEF_FLAGS[sdk=macosx*]" = "-DBUILD_FOR_OSX";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 446D3AAR7E;
 				DYLIB_CURRENT_VERSION = 228;
@@ -1184,6 +1185,8 @@
 				PRODUCT_NAME = objc.A;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/include/objc;
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = "non-global";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_TEXT_BASED_API = YES;
 				TAPI_VERIFY_MODE = Pedantic;
@@ -1197,6 +1200,7 @@
 				COPY_HEADERS_RUN_UNIFDEF = YES;
 				COPY_HEADERS_UNIFDEF_FLAGS = "-UBUILD_FOR_OSX";
 				"COPY_HEADERS_UNIFDEF_FLAGS[sdk=macosx*]" = "-DBUILD_FOR_OSX";
+				DEAD_CODE_STRIPPING = NO;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 446D3AAR7E;
 				DYLIB_CURRENT_VERSION = 228;
@@ -1269,6 +1273,8 @@
 				PRODUCT_NAME = objc.A;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/include/objc;
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = "non-global";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_TEXT_BASED_API = YES;
 				TAPI_VERIFY_MODE = Pedantic;
@@ -1530,13 +1536,14 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = objc_debug_ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/..";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "space.objc-debug-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRIP_STYLE = debugging;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1587,12 +1594,13 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = objc_debug_ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/..";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "space.objc-debug-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRIP_STYLE = debugging;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;

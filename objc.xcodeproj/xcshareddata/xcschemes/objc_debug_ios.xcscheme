@@ -59,6 +59,11 @@
          <EnvironmentVariable
             key = "OS_ACTIVITY_MODE"
             value = "0"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "OBJC_PRINT_LOAD_METHODS"
+            value = "YES"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable

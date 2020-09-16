@@ -7,6 +7,8 @@
 
 #import "ViewController.h"
 
+extern void fast_method_exchangeImplementations(void);
+
 @interface ViewController ()
 
 @end
@@ -15,7 +17,12 @@
 
 + (void)load
 {
-    
+    printf("load\n");
+}
+
+__attribute__((constructor)) static void entry(void)
+{
+    printf("constructor\n");
 }
 
 - (void)viewDidLoad {
@@ -23,6 +30,8 @@
     // Do any additional setup after loading the view.
 
     printf("viewDidLoad");
+
+    fast_method_exchangeImplementations();
 }
 
 

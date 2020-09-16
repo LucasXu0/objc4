@@ -201,7 +201,7 @@ static void call_class_loads(void)
         if (!cls) continue; 
 
         if (PrintLoading) {
-            _objc_inform("LOAD: +[%s load]\n", cls->nameForLogging());
+//            _objc_inform("LOAD: +[%s load]\n", cls->nameForLogging());
         }
 
         auto start = std::chrono::system_clock::now();                                  // before load
@@ -211,7 +211,9 @@ static void call_class_loads(void)
         auto end = std::chrono::system_clock::now();                                    // after load
         std::chrono::duration<double> elapsed_seconds = end - start;
 
-        printf("LOAD: +[%s load] cost time = %fms\n", cls->nameForLogging(), elapsed_seconds.count()); // log
+        if (PrintLoading) {
+            _objc_inform("LOAD: +[%s load] cost time = %fms\n", cls->nameForLogging(), elapsed_seconds.count() * 1000); // log
+        }
     }
     
     // Destroy the detached list.
@@ -254,9 +256,9 @@ static bool call_category_loads(void)
         cls = _category_getClass(cat);
         if (cls  &&  cls->isLoadable()) {
             if (PrintLoading) {
-                _objc_inform("LOAD: +[%s(%s) load]\n", 
-                             cls->nameForLogging(), 
-                             _category_getName(cat));
+//                _objc_inform("LOAD: +[%s(%s) load]\n",
+//                             cls->nameForLogging(),
+//                             _category_getName(cat));
             }
             auto start = std::chrono::system_clock::now();
 
@@ -265,7 +267,9 @@ static bool call_category_loads(void)
             auto end = std::chrono::system_clock::now();
             std::chrono::duration<double> elapsed_seconds = end - start;
 
-            printf("LOAD: +[%s(%s) load] cost time = %fms\n", cls->nameForLogging(), _category_getName(cat), elapsed_seconds.count());
+            if (PrintLoading) {
+                _objc_inform("LOAD: +[%s(%s) load] cost time = %fms\n", cls->nameForLogging(), _category_getName(cat), elapsed_seconds.count() * 1000);
+            }
 
             cats[i].cat = nil;
         }

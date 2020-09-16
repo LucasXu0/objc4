@@ -1091,6 +1091,9 @@ OBJC_EXPORT void
 method_exchangeImplementations(Method _Nonnull m1, Method _Nonnull m2) 
     OBJC_AVAILABLE(10.5, 2.0, 9.0, 1.0, 2.0);
 
+OBJC_EXPORT void
+fast_method_exchangeImplementations()
+    OBJC_AVAILABLE(10.5, 2.0, 9.0, 1.0, 2.0);
 
 /* Working with Instance Variables */
 

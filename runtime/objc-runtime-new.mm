@@ -3951,8 +3951,40 @@ method_setImplementation(Method m, IMP imp)
     return _method_setImplementation(Nil, m, imp);
 }
 
+static int cnt = 0;
+
+Method m1s[1024];
+Method m2s[1024];
 
 void method_exchangeImplementations(Method m1, Method m2)
+{
+    m1s[cnt] = m1;
+    m2s[cnt] = m2;
+
+    cnt++;
+
+    return;
+
+//    if (!m1  ||  !m2) return;
+//
+//    mutex_locker_t lock(runtimeLock);
+//
+//    IMP m1_imp = m1->imp;
+//    m1->imp = m2->imp;
+//    m2->imp = m1_imp;
+//
+//
+//    // RR/AWZ updates are slow because class is unknown
+//    // Cache updates are slow because class is unknown
+//    // fixme build list of classes whose Methods are known externally?
+//
+//    flushCaches(nil);
+//
+//    adjustCustomFlagsForMethodChange(nil, m1);
+//    adjustCustomFlagsForMethodChange(nil, m2);
+}
+
+void __method_exchangeImplementations(Method m1, Method m2)
 {
     if (!m1  ||  !m2) return;
 
@@ -3973,6 +4005,12 @@ void method_exchangeImplementations(Method m1, Method m2)
     adjustCustomFlagsForMethodChange(nil, m2);
 }
 
+void fast_method_exchangeImplementations()
+{
+    for (int i = 0; i < cnt - 1; i++) {
+        __method_exchangeImplementations(m1s[i], m2s[i]);
+    }
+}
 
 /***********************************************************************
 * ivar_getOffset
