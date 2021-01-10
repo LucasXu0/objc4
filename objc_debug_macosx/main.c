@@ -10,8 +10,8 @@
 
 int main(int argc, const char * argv[])
 {
-    __auto_type NSObject = objc_getClass("NSObject");
-    __auto_type size = sizeof(*NSObject);
-    printf("size of NSObject = %lu\n", size);
+//    __auto_type NSObject = objc_getClass("NSObject");
+//    __auto_type size = sizeof(*NSObject);
+//    printf("size of NSObject = %lu\n", size);
     return 0;
 }
